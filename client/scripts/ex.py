@@ -159,11 +159,13 @@ def generate_image(name, class_year):
         .mosaic()
         .clip(samplingArea)
     )
+    try:
+        mainScene = ee.Image(neibCollection.clip(classificationArea))
 
-    mainScene = ee.Image(neibCollection.clip(classificationArea))
-
-    features = [mainScene, neibCollection]
-    
+        features = [mainScene, neibCollection]
+    except:
+        logger.exception('mainScene error')
+        exit(1)
  
     #######################################/
 
@@ -206,7 +208,6 @@ def get_Exports(version, num, full_name):
             "fileNamePrefix": f"COLECAO/LANDSAT/PASTURE/pastureMapping_LS_Col7_{class_year}_LAPIG_{name}_{class_type}",
             "region": ROI,
             "scale": 30,
-            #"shardSize":32,
             "maxPixels": 1.0e13,
         }
     )

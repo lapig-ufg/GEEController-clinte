@@ -46,13 +46,14 @@ def main():
 
     try:
         data = get(
-            f'{settings.SERVER}/coder/get/{settings.VERSION}'
+            f'{settings.SERVER}/coder/get/{settings.VERSION}?key={settings.KEYAPI}'
         ).json()
         with open('ClientGEE/scripty.py', 'w') as f1:
             f1.write(data['coder'])
         logger.warning(f" {data['date']}")
 
     except:
+        logger.exception('Fatal ERROR')
         exit(1)
     version = settings.VERSION
     client = settings.CLIENT

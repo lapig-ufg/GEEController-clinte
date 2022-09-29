@@ -1,0 +1,8 @@
+[default]
+VERSION = 'MULT1'
+SERVER = 'https://geetask.lapig.iesa.ufg.br'
+DEBUG = true
+LOGIN_FORCE = false
+QUANTITY_ALLOWED_IN_QUEUE = 40
+CLASS_RUM = 'all'
+
